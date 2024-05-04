@@ -10,18 +10,10 @@ var server = http.Server(app);
 var io = socketIO(server);
 
 app.set('port', port);
-app.use('/static', express.static(__dirname + '/static'));
+app.use(express.static('static'));
 
 app.get('/', function(request, response) {
     response.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.get('/style.css', function(request, response) {
-    response.sendFile(path.join(__dirname, 'style.css'));
-});
-
-app.get('/script.js', function(request, response) {
-    response.sendFile(path.join(__dirname, 'script.js'));
 });
 
 server.listen(5000, function() {
